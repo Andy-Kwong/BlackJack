@@ -114,16 +114,36 @@ class Game {
             else if (card[1] == 1) {
                 ace += 1;
             }
-        }
-
-        if (total + ace > 21) {
-            return -1;
+            else {
+                total += card[1];
+            }
         }
         
-        if (total <= 10 && ace <= 4 && ace > 0) {
-            total += 11 + ace;
-            ace -= 1;
+        if (total <= 10 && ace == 1) {
+            total += 11;
         }
+
+        else if (total <= 9 && ace == 2) {
+            total += 11 + ace - 1
+        }
+
+        else if (total <= 8 && ace == 3) {
+            total += 11 + ace - 1
+        }
+
+        else if (total <= 7 && ace == 4) {
+            total += 11 + ace - 1
+        }
+
+        else {
+            total += ace
+        }
+
+        if (total == 21) {
+            return -1;
+        }
+
+        return checkBust(total)
 
     }
 
